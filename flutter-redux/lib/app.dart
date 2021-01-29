@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: RoutePath.COUNTER_PAGE,
+      initialRoute: RoutePath.TODO_PAGE,
       onGenerateRoute: AppRouter.generateRoute,
       onUnknownRoute: AppRouter.unknownRoute,
     );
