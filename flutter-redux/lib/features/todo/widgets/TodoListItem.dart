@@ -18,7 +18,7 @@ class TodoListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(20, 0, 20, 15),
+      margin: EdgeInsets.fromLTRB(16, 0, 16, 15),
       padding: EdgeInsets.fromLTRB(5, 13, 5, 13),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

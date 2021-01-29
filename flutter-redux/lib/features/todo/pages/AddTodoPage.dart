@@ -1,6 +1,10 @@
 import 'package:chips_choice/chips_choice.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_reduxpersist_arch/cores/colors/CustomColor.dart';
+import 'package:flutter_reduxpersist_arch/domains/todo/actions/SetTodoListAction.dart';
+import 'package:flutter_reduxpersist_arch/domains/todo/models/Todo.dart';
+import 'package:flutter_reduxpersist_arch/store.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 class ColorOption {
@@ -170,13 +174,25 @@ class _AddTodoPageState extends State<AddTodoPage> {
   }
 
   void onAddTodo() {
-    var formData = {
-      "task": this._taskTitleController.text,
-      "schedule": this._taskScheduleController.text,
-      "color": this._selectedColor.value
-    };
+    if (this._taskTitleController.text.isEmpty) {
+      return;
+    }
 
-    print(formData);
+    if (this._taskScheduleController.text.isEmpty) {
+      return;
+    }
+
+    if (this._selectedColor == null) {
+      return;
+    }
+
+    StoreProvider.of<AppState>(context).dispatch(SetTodoAction(Todo(
+      task: this._taskTitleController.text,
+      schedule: DateTime.parse(this._taskScheduleController.text),
+      color: this._selectedColor.value
+    )));
+
+    Navigator.of(context).pop();
   }
 
   void onTapTimePicker() async {
