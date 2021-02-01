@@ -15,11 +15,10 @@ void main() async {
     )
   );
 
-  final store = createStore();
 
   runApp(
     StoreProvider(
-      store: store,
+      store: AppStore,
       child: MyApp()
     )
   );

@@ -1,8 +1,9 @@
+import 'package:flutter_reduxpersist_arch/cores/redux/state.dart';
 import 'package:flutter_reduxpersist_arch/domains/todo/models/Todo.dart';
 import 'package:meta/meta.dart';
 
 @immutable
-class TodoState {
+class TodoState extends State {
   final List<Todo> todos;
 
   TodoState({

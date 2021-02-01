@@ -1,4 +1,4 @@
-import 'package:flutter_reduxpersist_arch/domains/todo/reducer/TodoReducer.dart';
+import 'package:flutter_reduxpersist_arch/domains/todo/reducer/TodoReducerV2.dart';
 import 'package:flutter_reduxpersist_arch/domains/todo/state/TodoState.dart';
 import 'package:meta/meta.dart';
 import 'package:redux/redux.dart';
@@ -27,7 +27,7 @@ class AppState {
 }
 
 AppState appReducer(AppState state, dynamic action) => AppState(
-  todoState: todoReducer(state.todoState, action),
+  todoState: new TodoReducerV2().call(state.todoState, action)
 );
 
 Store<AppState> createStore() {
@@ -37,3 +37,5 @@ Store<AppState> createStore() {
     middleware: []
   );
 }
+
+final Store<AppState> AppStore = createStore();
